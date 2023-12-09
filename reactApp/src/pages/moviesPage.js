@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { getMovies } from "../api/movies-api";
+import { getMovies } from '../api/movies-api';
 
 const MoviesPage = () => {
     const { data, error, isLoading, isError } = useQuery('discover', getMovies)
@@ -10,7 +10,9 @@ const MoviesPage = () => {
     if (isError) {
         return <h1>{error.message}</h1>
     }
-    const movies = data.results;
+    console.log(data)
+    const movies = data;
+
     const moviesDisplay = (
         <div>
             {movies.map(movie => { return <li key={movie.id}>{movie.id},{movie.title}<br /></li> })}
